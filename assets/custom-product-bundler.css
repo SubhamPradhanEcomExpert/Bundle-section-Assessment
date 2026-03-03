@@ -1,0 +1,849 @@
+/* ============================================
+   Custom Product Bundler — Section Styles
+   ============================================ */
+
+/* ---------- Layout ---------- */
+.cpb-section {
+  background: #fafafa;
+}
+
+.cpb-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 989px) {
+  .cpb-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   LEFT SIDE — Steps / Accordions
+   ============================================ */
+.cpb-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ---------- Single Step (native <details>) ---------- */
+.details-wrapper{
+    border-top: 0.5px;
+    border-bottom: 0.5px;
+    border-color: #1f1f1f;
+}
+.cpb-step {
+  /* border: none; */
+  /* border-bottom: 1px solid #e0e0e0; */
+  border-width: .5px 0px .5px 0px ;
+  border-color: #1f1f1f;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* .cpb-step:last-child {
+  border-bottom: 1px solid #e0e0e0;
+} */
+
+.cpb-step[open] {
+  border-bottom: none;
+  padding-bottom: 12px;
+}
+
+/* Label sits outside the bordered area */
+.cpb-step__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #888;
+  text-transform: uppercase;
+  padding: 14px 4px 6px;
+}
+
+/* ---------- Step Header (native <summary>) ---------- */
+.cpb-step__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* width: 100%; */
+  padding: 14px 20px;
+  border-width: 0.5px 0px 0.5px 0px;
+  border-color: #1F1F1F;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  gap: 12px;
+  font-family: inherit;
+  list-style: none;
+}
+
+/* Hide the default browser disclosure triangle */
+.cpb-step__header::-webkit-details-marker {
+  display: none;
+}
+
+.cpb-step__header::marker {
+  display: none;
+  content: '';
+}
+
+.cpb-step__header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cpb-step__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cpb-step__icon,
+.cpb-step__icon-placeholder {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.cpb-step__icon {
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.cpb-step__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cpb-step__header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cpb-step__selected-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6C63FF;
+  white-space: nowrap;
+  display: none;
+}
+
+.cpb-step__selected-count.has-count {
+  display: inline;
+}
+
+.cpb-step__arrow {
+  color: #6C63FF;
+  font-size: 12px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.cpb-step[open] .cpb-step__arrow {
+  transform: rotate(180deg);
+}
+
+/* ---------- Step Content ---------- */
+.cpb-step__content {
+  padding: 0 24px 24px;
+  animation: cpb-slideDown 0.35s ease;
+}
+
+@keyframes cpb-slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cpb-step__empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+/* ---------- Products Grid ---------- */
+.cpb-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .cpb-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ---------- Product Card ---------- */
+.cpb-product-card {
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cpb-product-card:hover {
+  border-color: #c4c0ff;
+}
+
+.cpb-product-card.cpb-product-card--selected {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, .15);
+}
+
+/* Product Image */
+.cpb-product-card__image-wrapper {
+  position: relative;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  min-height: 130px;
+}
+
+.cpb-product-card__image {
+  max-width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.cpb-product-card__badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #6C63FF;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.3px;
+}
+
+/* Product Info */
+.cpb-product-card__info {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.cpb-product-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cpb-product-card__description {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cpb-product-card__learn-more {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6C63FF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.cpb-product-card__learn-more:hover {
+  color: #4a42d4;
+}
+
+/* ---------- Variant Swatches ---------- */
+.cpb-product-card__option {
+  margin-top: 4px;
+}
+
+.cpb-product-card__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Color Swatch */
+.cpb-swatch {
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  padding: 0;
+  background: none;
+}
+
+.cpb-swatch--color {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+.cpb-swatch--color.cpb-swatch--active {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, .25);
+}
+
+/* Size / Text Swatch */
+.cpb-swatch--size,
+.cpb-swatch--text {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #555;
+  background: #f2f2f2;
+  border: 2px solid transparent;
+}
+
+.cpb-swatch--size.cpb-swatch--active,
+.cpb-swatch--text.cpb-swatch--active {
+  background: #6C63FF;
+  color: #fff;
+  border-color: #6C63FF;
+}
+
+/* ---------- Quantity + Price Row ---------- */
+.cpb-product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.cpb-product-card__quantity {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cpb-qty-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  font-family: inherit;
+  padding: 0;
+}
+
+.cpb-qty-btn:hover {
+  background: #f5f3ff;
+  color: #6C63FF;
+}
+
+.cpb-qty-value {
+  width: 28px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  line-height: 30px;
+}
+
+/* Price */
+.cpb-product-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.cpb-price--compare {
+  font-size: 12px;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.cpb-price--current {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ---------- Next Step Button ---------- */
+.cpb-step__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cpb-step__next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+}
+
+.cpb-step__next-btn:hover {
+  background: #6C63FF;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   RIGHT SIDE — Review Panel
+   ============================================ */
+.cpb-review-panel {
+  position: sticky;
+  top: 100px;
+}
+
+.cpb-review-panel__inner {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Review Header */
+.cpb-review__header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cpb-review__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #888;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cpb-review__title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.cpb-review__subtitle {
+  font-size: 13px;
+  color: #777;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Review Items Container */
+.cpb-review__items {
+  padding: 0;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.cpb-review__items::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cpb-review__items::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cpb-review__items::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.cpb-review__empty {
+  padding: 32px 24px;
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+}
+
+/* Review Category Group */
+.cpb-review__category {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cpb-review__category:last-child {
+  border-bottom: none;
+}
+
+.cpb-review__category-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #888;
+  text-transform: uppercase;
+  padding: 12px 24px 4px;
+  margin: 0;
+}
+
+/* Review Item Row */
+.cpb-review__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+}
+
+.cpb-review__item-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #f6f6f6;
+  flex-shrink: 0;
+}
+
+.cpb-review__item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cpb-review__item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cpb-review__item-variant {
+  font-size: 11px;
+  color: #999;
+  margin: 0;
+}
+
+/* Review Item Quantity */
+.cpb-review__item-qty {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cpb-review__qty-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  font-family: inherit;
+  padding: 0;
+}
+
+.cpb-review__qty-btn:hover {
+  background: #f5f3ff;
+  color: #6C63FF;
+}
+
+.cpb-review__qty-value {
+  width: 24px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  line-height: 26px;
+}
+
+/* Review Item Price */
+.cpb-review__item-price {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.cpb-review__item-compare {
+  font-size: 11px;
+  color: #aaa;
+  text-decoration: line-through;
+  display: block;
+}
+
+.cpb-review__item-current {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ---------- Review Totals ---------- */
+.cpb-review__totals {
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.cpb-review__savings-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cpb-review__guarantee-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.cpb-review__installment {
+  font-size: 13px;
+  color: #555;
+}
+
+.cpb-review__monthly {
+  color: #6C63FF;
+  font-weight: 700;
+}
+
+.cpb-review__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cpb-review__original-price {
+  font-size: 14px;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.cpb-review__final-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.cpb-review__congrats {
+  font-size: 13px;
+  color: #22c55e;
+  font-weight: 600;
+  margin: 8px 0 0;
+  text-align: right;
+}
+
+/* ---------- Review Actions ---------- */
+.cpb-review__actions {
+  padding: 0 24px 24px;
+}
+
+.cpb-review__checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #6C63FF;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.cpb-review__checkout-btn:hover {
+  background: #5046e4;
+  transform: translateY(-1px);
+}
+
+.cpb-review__save-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #6C63FF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.cpb-review__save-link:hover {
+  color: #4a42d4;
+}
+
+/* ---------- Fast Shipping Row ---------- */
+.cpb-review__extra-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+}
+
+.cpb-review__extra-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.cpb-review__extra-icon {
+  width: 20px;
+  height: 20px;
+  color: #6C63FF;
+}
+
+.cpb-review__extra-price {
+  text-align: right;
+}
+
+.cpb-review__extra-compare {
+  font-size: 11px;
+  color: #aaa;
+  text-decoration: line-through;
+  display: block;
+}
+
+.cpb-review__extra-current {
+  font-size: 14px;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+/* ============================================
+   Responsive Tweaks
+   ============================================ */
+@media (max-width: 989px) {
+  .cpb-review-panel {
+    position: static;
+    order: -1;
+  }
+
+  .cpb-review__items {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cpb-step__header {
+    padding: 12px 16px;
+  }
+
+  .cpb-step__title {
+    font-size: 15px;
+  }
+
+  .cpb-step__content {
+    padding: 0 16px 16px;
+  }
+
+  .cpb-review-panel__inner {
+    border-radius: 10px;
+  }
+
+  .cpb-review__header {
+    padding: 16px 16px 12px;
+  }
+
+  .cpb-review__title {
+    font-size: 17px;
+  }
+
+  .cpb-review__item {
+    padding: 8px 16px;
+  }
+
+  .cpb-review__category-label {
+    padding: 10px 16px 4px;
+  }
+
+  .cpb-review__totals {
+    padding: 12px 16px;
+  }
+
+  .cpb-review__actions {
+    padding: 0 16px 16px;
+  }
+
+  .cpb-review__final-price {
+    font-size: 22px;
+  }
+}
+
+/* ---------- Utility ---------- */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
