@@ -179,6 +179,8 @@
       // Add selected styling
       if (entry.quantity > 0) {
         card.classList.add('cpb-product-card--selected');
+        const minusBtn = card.querySelector('.cpb-qty-btn--minus');
+        if (minusBtn) updateMinusBtnState(minusBtn, entry.quantity);
       }
 
       // Update variant price display on card
@@ -329,6 +331,7 @@
         qty++;
         qtyDisplay.textContent = qty;
         card.classList.add('cpb-product-card--selected');
+        updateMinusBtnState(minusBtn, qty);
         syncCardToState(card, qty);
       });
 
@@ -340,9 +343,21 @@
         if (qty === 0) {
           card.classList.remove('cpb-product-card--selected');
         }
+        updateMinusBtnState(minusBtn, qty);
         syncCardToState(card, qty);
       });
     });
+  }
+
+  /**
+   * Toggle filled style on minus button when qty >= 1
+   */
+  function updateMinusBtnState(minusBtn, qty) {
+    if (qty >= 1) {
+      minusBtn.classList.add('cpb-qty-btn--minus-active');
+    } else {
+      minusBtn.classList.remove('cpb-qty-btn--minus-active');
+    }
   }
 
   function syncCardToState(card, qty) {
@@ -522,6 +537,10 @@
     const qtyDisplay = card.querySelector('.cpb-qty-value');
     if (qtyDisplay) {
       qtyDisplay.textContent = entry.quantity;
+    }
+    const minusBtn = card.querySelector('.cpb-qty-btn--minus');
+    if (minusBtn) {
+      updateMinusBtnState(minusBtn, entry.quantity);
     }
     if (entry.quantity <= 0) {
       card.classList.remove('cpb-product-card--selected');

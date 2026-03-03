@@ -22,8 +22,8 @@
         {%- assign block_icon = block.settings.block_icon -%}
 
         <!-- Step Label (outside the bordered area) -->
-        <span class="cpb-step__label">STEP {{ block_index }} OF {{ total_blocks }}</span>
         <div class="details-wrapper">
+            <span class="cpb-step__label">STEP {{ block_index }} OF {{ total_blocks }}</span>
             <details
               class="cpb-step"
               data-step-index="{{ block_index }}"
@@ -112,11 +112,12 @@
                         <!-- Product Info -->
                         <div class="cpb-product-card__info">
                           <h4 class="cpb-product-card__title">{{ product.title }}</h4>
-                          <p class="cpb-product-card__description">{{ product.description | strip_html | truncate: 80 }}</p>
-    
-                          {%- if product.description != blank -%}
-                            <a href="{{ product.url }}" class="cpb-product-card__learn-more">Learn More</a>
-                          {%- endif -%}
+                          <div class="cpb-product-card__desc-wrapper">
+                            <p class="cpb-product-card__description">{{ product.description | strip_html | truncate: 80 }}</p>
+                            {%- if product.description != blank -%}
+                              <a href="{{ product.url }}" class="cpb-product-card__learn-more">Learn More</a>
+                            {%- endif -%}
+                          </div>
     
                           <!-- Variant Options (Color/Size Swatches) -->
                           {%- for option in product.options_with_values -%}
