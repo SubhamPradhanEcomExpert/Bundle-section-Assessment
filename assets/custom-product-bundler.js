@@ -275,6 +275,29 @@
       }
     }
 
+    // Update "Save XX%" badge based on variant prices
+    const badge = card.querySelector('.cpb-product-card__badge');
+    if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+      const savePercent = Math.round(
+        ((variant.compare_at_price - variant.price) / variant.compare_at_price) * 100
+      );
+      if (badge) {
+        badge.textContent = `Save ${savePercent}%`;
+        badge.style.display = '';
+      } else {
+        // Create badge if it doesn't exist yet
+        const wrapper = card.querySelector('.cpb-product-card__image-wrapper');
+        if (wrapper) {
+          const newBadge = document.createElement('span');
+          newBadge.className = 'cpb-product-card__badge';
+          newBadge.textContent = `Save ${savePercent}%`;
+          wrapper.appendChild(newBadge);
+        }
+      }
+    } else {
+      if (badge) badge.style.display = 'none';
+    }
+
     // Update image if variant has one
     if (variant.featured_image) {
       const imgEl = card.querySelector('.cpb-product-card__image');
@@ -291,26 +314,27 @@
 
   function updateExistingSelection(card) {
     const productId = card.dataset.productId;
-    // Find any existing entry for this product
-    for (const [key, entry] of selectedProducts) {
-      if (String(entry.productId) === String(productId)) {
-        const selectedOptions = getSelectedOptions(card);
-        const variant = findMatchingVariant(card, selectedOptions);
-        if (!variant) return;
+    const selectedOptions = getSelectedOptions(card);
+    const variant = findMatchingVariant(card, selectedOptions);
+    if (!variant) return;
 
-        // Remove old key, add new
-        selectedProducts.delete(key);
-        const newKey = getProductKey(productId, variant.id);
-        entry.variantId = variant.id;
-        entry.price = variant.price;
-        entry.comparePrice = variant.compare_at_price || 0;
-        entry.selectedOptions = selectedOptions;
-        if (variant.featured_image) entry.image = variant.featured_image;
-        selectedProducts.set(newKey, entry);
-        saveToStorage();
-        renderReview();
-        return;
-      }
+    const newKey = getProductKey(productId, variant.id);
+
+    // Check if the NEW variant already has an entry in the bundle
+    const existingNewEntry = selectedProducts.get(newKey);
+    const qtyDisplay = card.querySelector('.cpb-qty-value');
+    const minusBtn = card.querySelector('.cpb-qty-btn--minus');
+
+    if (existingNewEntry) {
+      // Restore the quantity for this variant on the card
+      if (qtyDisplay) qtyDisplay.textContent = existingNewEntry.quantity;
+      card.classList.add('cpb-product-card--selected');
+      if (minusBtn) updateMinusBtnState(minusBtn, existingNewEntry.quantity);
+    } else {
+      // New variant not yet in review — reset card to 0
+      if (qtyDisplay) qtyDisplay.textContent = '0';
+      card.classList.remove('cpb-product-card--selected');
+      if (minusBtn) updateMinusBtnState(minusBtn, 0);
     }
   }
 

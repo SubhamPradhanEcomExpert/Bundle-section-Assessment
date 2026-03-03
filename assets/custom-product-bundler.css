@@ -10,7 +10,7 @@
 .cpb-layout {
   display: grid;
   grid-template-columns: 1fr 380px;
-  gap: 32px;
+  gap: 29px;
   align-items: start;
 }
 
