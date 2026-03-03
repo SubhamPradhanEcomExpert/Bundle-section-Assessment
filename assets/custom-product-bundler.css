@@ -492,11 +492,13 @@
 /* Review Header */
 .cpb-review__header {
   padding: 15px 15px 10px;
+  padding-bottom: 0px;
 }
 .cpb-review-panel__inner-separator{
     height: 1px;
     width: calc(100% - 40px);
     margin: 0 auto;
+    margin-top: 10px;
     background: #CED6DE;
 }
 
@@ -583,6 +585,9 @@
   align-items: center;
   gap: 12px;
   padding: 6px 20px;
+}
+.cpb-review__item:last-child {
+  padding-bottom: 0;
 }
 
 .cpb-review__item-image-wrapper{
@@ -686,78 +691,168 @@
 
 /* ---------- Review Totals ---------- */
 .cpb-review__totals {
-  padding: 16px 24px;
-  border-top: 1px solid #f0f0f0;
+  padding: 0;
 }
 
-.cpb-review__savings-badge {
+/* Fast Shipping Row */
+.cpb-review__shipping-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px 10px;
+}
+
+.cpb-review__shipping-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
 }
 
-.cpb-review__guarantee-icon svg {
-  width: 32px;
-  height: 32px;
+.cpb-review__shipping-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #F0EDFF;
+  border-radius: 8px;
+}
+
+.cpb-review__shipping-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cpb-review__shipping-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.cpb-review__shipping-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.cpb-review__shipping-original {
+  font-size: 14px;
+  color: #6F7882;
+  text-decoration: line-through;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.5%;
+}
+
+.cpb-review__shipping-free {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.5%;
+  font-weight: 400;
+  color: #4E2FD2;
+}
+
+/* Subtotal Row with Guarantee Badge */
+.cpb-review__subtotal-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  padding-top: 0px;
+}
+
+.cpb-review__guarantee-badge {
+  flex-shrink: 0;
+}
+
+.cpb-review__guarantee-badge svg {
+  width: 60px;
+  height: 60px;
+}
+
+.cpb-review__subtotal-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .cpb-review__installment {
-  font-size: 13px;
-  color: #555;
+    padding: 5px 8px;
+    border-radius: 3px;
+    background:#4E2FD2;
+}
+.cpb-review__installment span{
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -5%;
+    
 }
 
-.cpb-review__monthly {
-  color: #6C63FF;
+/* .cpb-review__monthly {
+  color: #4E2FD2;
   font-weight: 700;
-}
+} */
 
 .cpb-review__price-row {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
   justify-content: flex-end;
 }
 
 .cpb-review__original-price {
-  font-size: 14px;
-  color: #aaa;
-  text-decoration: line-through;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.25%;
+    text-decoration: line-through;
+    font-weight: 400;
+    color: #6F7882;
 }
 
 .cpb-review__final-price {
-  font-size: 28px;
-  font-weight: 800;
-  color: #1a1a1a;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.13%;
+  font-weight: 400;
+  color: #4E2FD2;
 }
 
 .cpb-review__congrats {
-  font-size: 13px;
-  color: #22c55e;
-  font-weight: 600;
-  margin: 8px 0 0;
-  text-align: right;
+  font-size: 12px;
+  color: #0AA288;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.06px;
+  margin: 0;
+  padding: 0 20px 0px;
+  text-align: center;
 }
 
 /* ---------- Review Actions ---------- */
 .cpb-review__actions {
-  padding: 0 24px 24px;
+  padding: 0 24px 31px;
 }
 
 .cpb-review__checkout-btn {
   display: block;
   width: 100%;
-  padding: 14px;
-  background: #6C63FF;
+  padding: 13px 16px;
+  background: #4E2FD2;
   color: #fff;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 4px;
+  font-size: 17px;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
   font-family: inherit;
-  letter-spacing: 0.3px;
+  line-height: 100%;
+  letter-spacing: 0px;
 }
 
 .cpb-review__checkout-btn:hover {
@@ -768,12 +863,14 @@
 .cpb-review__save-link {
   display: block;
   text-align: center;
-  margin-top: 12px;
-  font-size: 13px;
-  color: #6C63FF;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: -0.02px;
+  color: #484848;
   text-decoration: underline;
   text-underline-offset: 2px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .cpb-review__save-link:hover {

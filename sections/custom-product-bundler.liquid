@@ -23,169 +23,223 @@
 
         <!-- Step Label (outside the bordered area) -->
         <div class="details-wrapper">
-            <span class="cpb-step__label">STEP {{ block_index }} OF {{ total_blocks }}</span>
-            <details
-              class="cpb-step"
-              data-step-index="{{ block_index }}"
-              data-block-id="{{ block.id }}"
-              data-block-title="{{ block_title | escape }}"
-              {{ block.shopify_attributes }}
-              {% if forloop.first %}open{% endif %}
-            >
-    
-              <!-- Summary = Accordion Toggle -->
-              <summary class="cpb-step__header">
-                <div class="cpb-step__header-left">
-                  <div class="cpb-step__title-row">
-                    {%- if block_icon != blank -%}
-                      <img
-                        src="{{ block_icon | image_url: width: 40 }}"
-                        alt=""
-                        class="cpb-step__icon"
-                        width="24"
-                        height="24"
-                        loading="lazy"
-                      >
-                    {%- else -%}
-                      <span class="cpb-step__icon-placeholder">
-                        {%- case block_index -%}
-                          {%- when 1 -%}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                          {%- when 2 -%}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                          {%- when 3 -%}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                          {%- when 4 -%}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                          {%- else -%}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
-                        {%- endcase -%}
-                      </span>
-                    {%- endif -%}
-                    <h3 class="cpb-step__title">{{ block_title | default: 'Choose your products' }}</h3>
-                  </div>
+          <span class="cpb-step__label">STEP {{ block_index }} OF {{ total_blocks }}</span>
+          <details
+            class="cpb-step"
+            data-step-index="{{ block_index }}"
+            data-block-id="{{ block.id }}"
+            data-block-title="{{ block_title | escape }}"
+            {{ block.shopify_attributes }}
+            {% if forloop.first %}
+            open{% endif %}>
+
+            <!-- Summary = Accordion Toggle -->
+            <summary class="cpb-step__header">
+              <div class="cpb-step__header-left">
+                <div class="cpb-step__title-row">
+                  {%- if block_icon != blank -%}
+                    <img
+                      src="{{ block_icon | image_url: width: 40 }}"
+                      alt=""
+                      class="cpb-step__icon"
+                      width="24"
+                      height="24"
+                      loading="lazy">
+                  {%- else -%}
+                    <span class="cpb-step__icon-placeholder">
+                      {%- case block_index -%}
+                        {%- when 1 -%}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle
+                              cx="12"
+                              cy="13"
+                              r="4" /></svg>
+                        {%- when 2 -%}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                        {%- when 3 -%}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                        {%- when 4 -%}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                        {%- else -%}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"><rect
+                              x="3"
+                              y="3"
+                              width="18"
+                              height="18"
+                              rx="2"
+                              ry="2" /></svg>
+                      {%- endcase -%}
+                    </span>
+                  {%- endif -%}
+                  <h3 class="cpb-step__title">{{ block_title | default: 'Choose your products' }}</h3>
                 </div>
-                <div class="cpb-step__header-right">
-                  <span class="cpb-step__selected-count" data-step-count="{{ block_index }}"></span>
-                  <span class="cpb-step__arrow">▼</span>
-                </div>
-              </summary>
-    
-              <!-- Step Content (Accordion Body) -->
-              <div class="cpb-step__content">
-                <div class="cpb-products-grid">
-                  {%- if collection != blank and collection.products.size > 0 -%}
-                    {%- for product in collection.products limit: 20 -%}
-                      <div
-                        class="cpb-product-card"
-                        data-product-id="{{ product.id }}"
-                        data-product-handle="{{ product.handle }}"
-                        data-product-title="{{ product.title | escape }}"
-                        data-product-url="{{ product.url }}"
-                        data-step-index="{{ block_index }}"
-                        data-block-title="{{ block_title | escape }}"
-                        data-product-price="{{ product.price }}"
-                        data-product-compare-price="{{ product.compare_at_price }}"
-                        data-product-image="{% if product.featured_media %}{{ product.featured_media | image_url: width: 200 }}{% endif %}"
-                      >
-                        <!-- Product Image -->
-                        <div class="cpb-product-card__image-wrapper">
-                          {%- if product.featured_media -%}
-                            <img
-                              src="{{ product.featured_media | image_url: width: 300 }}"
-                              alt="{{ product.featured_media.alt | escape }}"
-                              loading="lazy"
-                              width="200"
-                              height="200"
-                              class="cpb-product-card__image"
-                            >
-                          {%- else -%}
-                            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg cpb-product-card__image' }}
-                          {%- endif -%}
-    
-                          {%- if product.compare_at_price > product.price -%}
-                            {%- assign save_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
-                            <span class="cpb-product-card__badge">Save {{ save_percent }}%</span>
+              </div>
+              <div class="cpb-step__header-right">
+                <span class="cpb-step__selected-count" data-step-count="{{ block_index }}"></span>
+                <span class="cpb-step__arrow">▼</span>
+              </div>
+            </summary>
+
+            <!-- Step Content (Accordion Body) -->
+            <div class="cpb-step__content">
+              <div class="cpb-products-grid">
+                {%- if collection != blank and collection.products.size > 0 -%}
+                  {%- for product in collection.products limit: 20 -%}
+                    <div
+                      class="cpb-product-card"
+                      data-product-id="{{ product.id }}"
+                      data-product-handle="{{ product.handle }}"
+                      data-product-title="{{ product.title | escape }}"
+                      data-product-url="{{ product.url }}"
+                      data-step-index="{{ block_index }}"
+                      data-block-title="{{ block_title | escape }}"
+                      data-product-price="{{ product.price }}"
+                      data-product-compare-price="{{ product.compare_at_price }}"
+                      data-product-image="{% if product.featured_media %}{{ product.featured_media | image_url: width: 200 }}{% endif %}">
+                      <!-- Product Image -->
+                      <div class="cpb-product-card__image-wrapper">
+                        {%- if product.featured_media -%}
+                          <img
+                            src="{{ product.featured_media | image_url: width: 300 }}"
+                            alt="{{ product.featured_media.alt | escape }}"
+                            loading="lazy"
+                            width="200"
+                            height="200"
+                            class="cpb-product-card__image">
+                        {%- else -%}
+                          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg cpb-product-card__image' }}
+                        {%- endif -%}
+
+                        {%- if product.compare_at_price > product.price -%}
+                          {%- assign save_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+                          <span class="cpb-product-card__badge">Save {{ save_percent }}%</span>
+                        {%- endif -%}
+                      </div>
+
+                      <!-- Product Info -->
+                      <div class="cpb-product-card__info">
+                        <h4 class="cpb-product-card__title">{{ product.title }}</h4>
+                        <div class="cpb-product-card__desc-wrapper">
+                          <p class="cpb-product-card__description">{{ product.description | strip_html | truncate: 80 }}</p>
+                          {%- if product.description != blank -%}
+                            <a href="{{ product.url }}" class="cpb-product-card__learn-more">Learn More</a>
                           {%- endif -%}
                         </div>
-    
-                        <!-- Product Info -->
-                        <div class="cpb-product-card__info">
-                          <h4 class="cpb-product-card__title">{{ product.title }}</h4>
-                          <div class="cpb-product-card__desc-wrapper">
-                            <p class="cpb-product-card__description">{{ product.description | strip_html | truncate: 80 }}</p>
-                            {%- if product.description != blank -%}
-                              <a href="{{ product.url }}" class="cpb-product-card__learn-more">Learn More</a>
+
+                        <!-- Variant Options (Color/Size Swatches) -->
+                        {%- for option in product.options_with_values -%}
+                          <div class="cpb-product-card__option" data-option-name="{{ option.name | downcase }}">
+                            {%- assign option_name_lower = option.name | downcase -%}
+                            {%- if option_name_lower == 'color' or option_name_lower == 'colour' -%}
+                              <div class="cpb-product-card__swatches">
+                                {%- for value in option.values -%}
+                                  <button
+                                    type="button"
+                                    class="cpb-swatch cpb-swatch--color{% if forloop.first %} cpb-swatch--active{% endif %}"
+                                    data-option-index="{{ forloop.parentloop.index0 }}"
+                                    data-value="{{ value | escape }}"
+                                    title="{{ value }}"
+                                    style="background-color: {{ value | downcase | replace: ' ', '' }};">
+                                    <span class="visually-hidden">{{ value }}</span>
+                                  </button>
+                                {%- endfor -%}
+                              </div>
+                            {%- elsif option_name_lower == 'size' -%}
+                              <div class="cpb-product-card__swatches">
+                                {%- for value in option.values -%}
+                                  <button
+                                    type="button"
+                                    class="cpb-swatch cpb-swatch--size{% if forloop.first %} cpb-swatch--active{% endif %}"
+                                    data-option-index="{{ forloop.parentloop.index0 }}"
+                                    data-value="{{ value | escape }}">
+                                    {{ value }}
+                                  </button>
+                                {%- endfor -%}
+                              </div>
+                            {%- else -%}
+                              <div class="cpb-product-card__swatches">
+                                {%- for value in option.values -%}
+                                  <button
+                                    type="button"
+                                    class="cpb-swatch cpb-swatch--text{% if forloop.first %} cpb-swatch--active{% endif %}"
+                                    data-option-index="{{ forloop.parentloop.index0 }}"
+                                    data-value="{{ value | escape }}">
+                                    {{ value }}
+                                  </button>
+                                {%- endfor -%}
+                              </div>
                             {%- endif -%}
                           </div>
-    
-                          <!-- Variant Options (Color/Size Swatches) -->
-                          {%- for option in product.options_with_values -%}
-                            <div class="cpb-product-card__option" data-option-name="{{ option.name | downcase }}">
-                              {%- assign option_name_lower = option.name | downcase -%}
-                              {%- if option_name_lower == 'color' or option_name_lower == 'colour' -%}
-                                <div class="cpb-product-card__swatches">
-                                  {%- for value in option.values -%}
-                                    <button
-                                      type="button"
-                                      class="cpb-swatch cpb-swatch--color{% if forloop.first %} cpb-swatch--active{% endif %}"
-                                      data-option-index="{{ forloop.parentloop.index0 }}"
-                                      data-value="{{ value | escape }}"
-                                      title="{{ value }}"
-                                      style="background-color: {{ value | downcase | replace: ' ', '' }};"
-                                    >
-                                      <span class="visually-hidden">{{ value }}</span>
-                                    </button>
-                                  {%- endfor -%}
-                                </div>
-                              {%- elsif option_name_lower == 'size' -%}
-                                <div class="cpb-product-card__swatches">
-                                  {%- for value in option.values -%}
-                                    <button
-                                      type="button"
-                                      class="cpb-swatch cpb-swatch--size{% if forloop.first %} cpb-swatch--active{% endif %}"
-                                      data-option-index="{{ forloop.parentloop.index0 }}"
-                                      data-value="{{ value | escape }}"
-                                    >
-                                      {{ value }}
-                                    </button>
-                                  {%- endfor -%}
-                                </div>
-                              {%- else -%}
-                                <div class="cpb-product-card__swatches">
-                                  {%- for value in option.values -%}
-                                    <button
-                                      type="button"
-                                      class="cpb-swatch cpb-swatch--text{% if forloop.first %} cpb-swatch--active{% endif %}"
-                                      data-option-index="{{ forloop.parentloop.index0 }}"
-                                      data-value="{{ value | escape }}"
-                                    >
-                                      {{ value }}
-                                    </button>
-                                  {%- endfor -%}
-                                </div>
-                              {%- endif -%}
-                            </div>
-                          {%- endfor -%}
-    
-                          <!-- Quantity + Price Row -->
-                          <div class="cpb-product-card__footer">
-                            <div class="cpb-product-card__quantity">
-                              <button type="button" class="cpb-qty-btn cpb-qty-btn--minus" aria-label="Decrease quantity">−</button>
-                              <span class="cpb-qty-value">0</span>
-                              <button type="button" class="cpb-qty-btn cpb-qty-btn--plus" aria-label="Increase quantity">+</button>
-                            </div>
-                            <div class="cpb-product-card__price">
-                              {%- if product.compare_at_price > product.price -%}
-                                <s class="cpb-price--compare">{{ product.compare_at_price | money }}</s>
-                              {%- endif -%}
-                              <span class="cpb-price--current">{{ product.price | money }}</span>
-                            </div>
+                        {%- endfor -%}
+
+                        <!-- Quantity + Price Row -->
+                        <div class="cpb-product-card__footer">
+                          <div class="cpb-product-card__quantity">
+                            <button
+                              type="button"
+                              class="cpb-qty-btn cpb-qty-btn--minus"
+                              aria-label="Decrease quantity">−</button>
+                            <span class="cpb-qty-value">0</span>
+                            <button
+                              type="button"
+                              class="cpb-qty-btn cpb-qty-btn--plus"
+                              aria-label="Increase quantity">+</button>
+                          </div>
+                          <div class="cpb-product-card__price">
+                            {%- if product.compare_at_price > product.price -%}
+                              <s class="cpb-price--compare">{{ product.compare_at_price | money }}</s>
+                            {%- endif -%}
+                            <span class="cpb-price--current">{{ product.price | money }}</span>
                           </div>
                         </div>
-    
-                        <!-- Variant JSON (hidden) -->
-                        <script type="application/json" class="cpb-product-variants-json">
+                      </div>
+
+                      <!-- Variant JSON (hidden) -->
+                      <script type="application/json" class="cpb-product-variants-json">
                           [
                             {%- for variant in product.variants -%}
                               {
@@ -199,26 +253,29 @@
                               }{% unless forloop.last %},{% endunless %}
                             {%- endfor -%}
                           ]
-                        </script>
-                      </div>
-                    {%- endfor -%}
-                  {%- else -%}
-                    <div class="cpb-step__empty">
-                      <p>No products found. Please assign a collection to this block in the theme customizer.</p>
+                      </script>
                     </div>
-                  {%- endif -%}
-                </div>
-    
-                <!-- Next Step Button -->
-                {%- unless forloop.last -%}
-                  <div class="cpb-step__footer">
-                    <button type="button" class="cpb-step__next-btn" data-next-step="{{ block_index | plus: 1 }}">
-                      Next: {{ section.blocks[forloop.index].settings.block_title | default: 'Next step' }}
-                    </button>
+                  {%- endfor -%}
+                {%- else -%}
+                  <div class="cpb-step__empty">
+                    <p>No products found. Please assign a collection to this block in the theme customizer.</p>
                   </div>
-                {%- endunless -%}
+                {%- endif -%}
               </div>
-            </details>
+
+              <!-- Next Step Button -->
+              {%- unless forloop.last -%}
+                <div class="cpb-step__footer">
+                  <button
+                    type="button"
+                    class="cpb-step__next-btn"
+                    data-next-step="{{ block_index | plus: 1 }}">
+                    Next: {{ section.blocks[forloop.index].settings.block_title | default: 'Next step' }}
+                  </button>
+                </div>
+              {%- endunless -%}
+            </div>
+          </details>
         </div>
       {%- endfor -%}
     </div>
@@ -240,24 +297,115 @@
         </div>
         <div class="cpb-review-panel__inner-separator"></div>
         <!-- Review Totals -->
-        <div class="cpb-review__totals" id="cpb-review-totals" style="display:none;">
-          <div class="cpb-review__savings-badge">
-            <span class="cpb-review__guarantee-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6C63FF" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><text x="7" y="16" fill="#6C63FF" stroke="none" font-size="8" font-weight="bold">100%</text></svg>
-            </span>
-            <div class="cpb-review__installment">
-              <span>as low as <strong class="cpb-review__monthly" id="cpb-monthly-price">$0.00</strong>/mo</span>
+        <div
+          class="cpb-review__totals"
+          id="cpb-review-totals"
+          style="display:none;">
+          <!-- Fast Shipping Row -->
+          <div class="cpb-review__shipping-row">
+            <div class="cpb-review__shipping-left">
+              <span class="cpb-review__shipping-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#4E2FD2"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect
+                    x="1"
+                    y="3"
+                    width="15"
+                    height="13"
+                    rx="2"
+                    ry="2" />
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                  <circle
+                    cx="5.5"
+                    cy="18.5"
+                    r="2.5" />
+                  <circle
+                    cx="18.5"
+                    cy="18.5"
+                    r="2.5" />
+                </svg>
+              </span>
+              <span class="cpb-review__shipping-label">Fast Shipping</span>
+            </div>
+            <div class="cpb-review__shipping-right">
+              <s class="cpb-review__shipping-original" id="cpb-shipping-original">$5.99</s>
+              <span class="cpb-review__shipping-free">FREE</span>
             </div>
           </div>
-          <div class="cpb-review__price-row">
-            <s class="cpb-review__original-price" id="cpb-original-price">$0.00</s>
-            <span class="cpb-review__final-price" id="cpb-final-price">$0.00</span>
+
+          <!-- Subtotal Row with Guarantee Badge -->
+          <div class="cpb-review__subtotal-row">
+            <div class="cpb-review__guarantee-badge">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="60"
+                height="60"
+                viewBox="0 0 100 100"
+                fill="none">
+                <path
+                  d="M50 5 L61 10 L73 7 L80 17 L92 20 L93 32 L100 42 L95 53 L100 64 L92 73 L88 85 L76 87 L66 96 L55 91 L44 96 L33 87 L21 85 L17 73 L7 64 L12 53 L7 42 L17 32 L15 20 L27 17 L34 7 Z"
+                  fill="#4E2FD2"
+                  stroke="#4E2FD2"
+                  stroke-width="1" />
+                <text
+                  x="50"
+                  y="38"
+                  text-anchor="middle"
+                  fill="#fff"
+                  font-size="18"
+                  font-weight="bold">100%</text>
+                <text
+                  x="50"
+                  y="52"
+                  text-anchor="middle"
+                  fill="#fff"
+                  font-size="10"
+                  font-weight="400">Wyze</text>
+                <text
+                  x="50"
+                  y="63"
+                  text-anchor="middle"
+                  fill="#fff"
+                  font-size="9"
+                  font-weight="400">satisfaction</text>
+                <text
+                  x="50"
+                  y="74"
+                  text-anchor="middle"
+                  fill="#fff"
+                  font-size="9"
+                  font-weight="400">guarantee</text>
+              </svg>
+            </div>
+            <div class="cpb-review__subtotal-content">
+              <div class="cpb-review__installment">
+                <span>as low as
+                  <strong class="cpb-review__monthly" id="cpb-monthly-price">$0.00</strong>/mo</span>
+              </div>
+              <div class="cpb-review__price-row">
+                <s class="cpb-review__original-price" id="cpb-original-price">$0.00</s>
+                <span class="cpb-review__final-price" id="cpb-final-price">$0.00</span>
+              </div>
+            </div>
           </div>
           <p class="cpb-review__congrats" id="cpb-savings-message"></p>
         </div>
-        <div class="cpb-review-panel__inner-separator"></div>
-        <div class="cpb-review__actions" id="cpb-review-actions" style="display:none;">
-          <button type="button" class="cpb-review__checkout-btn" id="cpb-checkout-btn">Checkout</button>
+        <div
+          class="cpb-review__actions"
+          id="cpb-review-actions"
+          style="display:none;">
+          <button
+            type="button"
+            class="cpb-review__checkout-btn"
+            id="cpb-checkout-btn">Checkout</button>
           <a href="#" class="cpb-review__save-link">Save my system for later</a>
         </div>
       </div>
@@ -294,8 +442,7 @@
       {
         "type": "header",
         "content": "Spacing Settings"
-      },
-      {
+      }, {
         "type": "range",
         "id": "padding_top",
         "label": "Padding Top",
@@ -326,13 +473,11 @@
             "id": "block_title",
             "label": "Block Title",
             "default": "Choose your products"
-          },
-          {
+          }, {
             "type": "collection",
             "id": "collection",
             "label": "Collection"
-          },
-          {
+          }, {
             "type": "image_picker",
             "id": "block_icon",
             "label": "Block Icon (optional)"
