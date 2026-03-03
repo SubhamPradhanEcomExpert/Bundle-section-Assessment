@@ -454,6 +454,7 @@
     }
 
     const hasItems = selectedProducts.size > 0;
+    const reviewPanelInner = section.querySelector('.cpb-review-panel__inner');
 
     if (!hasItems) {
       reviewItemsContainer.innerHTML = `
@@ -462,8 +463,11 @@
         </div>`;
       reviewTotals.style.display = 'none';
       reviewActions.style.display = 'none';
+      if (reviewPanelInner) reviewPanelInner.classList.remove('cpb-review-panel--has-items');
       return;
     }
+
+    if (reviewPanelInner) reviewPanelInner.classList.add('cpb-review-panel--has-items');
 
     let html = '';
     for (const [groupName, items] of Object.entries(groups)) {
@@ -475,7 +479,9 @@
         const variantLabel = item.selectedOptions.length ? item.selectedOptions.join(' / ') : '';
         html += `
           <div class="cpb-review__item" data-review-key="${getProductKey(item.productId, item.variantId)}">
-            <img src="${item.image || ''}" alt="" class="cpb-review__item-image" loading="lazy" width="40" height="40">
+            <div class="cpb-review__item-image-wrapper">
+                <img src="${item.image || ''}" alt="" class="cpb-review__item-image" loading="lazy" width="40" height="40">
+            </div>
             <div class="cpb-review__item-info">
               <p class="cpb-review__item-name">${escapeHtml(item.title)}</p>
               ${variantLabel ? `<p class="cpb-review__item-variant">${escapeHtml(variantLabel)}</p>` : ''}

@@ -421,20 +421,25 @@
 .cpb-product-card__price {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 3px;
   flex-shrink: 0;
 }
 
 .cpb-price--compare {
-  font-size: 12px;
-  color: #aaa;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0.6px;
+  font-weight: 400;
+  color:#D8392B;
   text-decoration: line-through;
 }
 
 .cpb-price--current {
-  font-size: 15px;
-  font-weight: 700;
-  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.6px;
+  color:#575757;
 }
 
 /* ---------- Next Step Button ---------- */
@@ -476,41 +481,53 @@
 
 .cpb-review-panel__inner {
   background: #fff;
-  border: 1px solid #e5e5e5;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.cpb-review-panel__inner.cpb-review-panel--has-items {
+  background: #EDF4FF;
 }
 
 /* Review Header */
 .cpb-review__header {
-  padding: 24px 24px 16px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 15px 10px;
+}
+.cpb-review-panel__inner-separator{
+    height: 1px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    background: #CED6DE;
 }
 
 .cpb-review__label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #888;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 1.6px;
+  color: #484848;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .cpb-review__title {
-  font-size: 20px;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin: 0 0 6px;
-  line-height: 1.2;
+  font-size: 22px;
+  font-weight: 400;
+  color:#1F1F1F;
+  line-height: 100%;
+  letter-spacing: 0.6px;
+  padding: 20px 5px 5px;
 }
 
 .cpb-review__subtitle {
-  font-size: 13px;
-  color: #777;
+  font-size: 14px;
+  font-weight: 400;
+  color:#1F1F1FBF;
   margin: 0;
-  line-height: 1.5;
+  line-height: 130%;
+  letter-spacing: 0.6px;
+  padding: 0px 5px;
 }
 
 /* Review Items Container */
@@ -556,7 +573,7 @@
   letter-spacing: 1.2px;
   color: #888;
   text-transform: uppercase;
-  padding: 12px 24px 4px;
+  padding: 15px 20px 8px;
   margin: 0;
 }
 
@@ -565,14 +582,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 24px;
+  padding: 6px 20px;
+}
+
+.cpb-review__item-image-wrapper{
+    height: 41px;
+    width: 41px;
 }
 
 .cpb-review__item-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
   background: #f6f6f6;
   flex-shrink: 0;
 }
