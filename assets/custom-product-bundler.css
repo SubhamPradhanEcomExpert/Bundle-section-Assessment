@@ -205,6 +205,7 @@
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 13px;
   border: 2px solid transparent;
@@ -227,7 +228,7 @@
   justify-content: center;
   background: #fafafa;
   height: 123px;
-  width: 206px;
+  width: 214px;
 }
 
 .cpb-product-card__image {

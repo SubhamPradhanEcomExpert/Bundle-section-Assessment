@@ -298,11 +298,17 @@
       if (badge) badge.style.display = 'none';
     }
 
-    // Update image if variant has one
-    if (variant.featured_image) {
-      const imgEl = card.querySelector('.cpb-product-card__image');
-      if (imgEl && imgEl.tagName === 'IMG') {
+    // Update image: use variant image if available, otherwise fall back to product default
+    const imgEl = card.querySelector('.cpb-product-card__image');
+    if (imgEl && imgEl.tagName === 'IMG') {
+      if (variant.featured_image) {
         imgEl.src = variant.featured_image;
+      } else {
+        // Fall back to the product's default image stored on the card
+        const defaultImage = card.dataset.productImage;
+        if (defaultImage) {
+          imgEl.src = defaultImage;
+        }
       }
     }
 
