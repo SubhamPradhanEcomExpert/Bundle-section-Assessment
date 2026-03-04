@@ -472,7 +472,7 @@
     let html = '';
     for (const [groupName, items] of Object.entries(groups)) {
       html += `<div class="cpb-review__category">`;
-      html += `<p class="cpb-review__category-label">${escapeHtml(groupName)}</p>`;
+      html += `<p class="cpb-review__category-label">${escapeHtml(groupName.trim().split(" ").pop())}</p>`;
       items.forEach((item) => {
         const lineTotal = item.price * item.quantity;
         const lineCompare = item.comparePrice ? item.comparePrice * item.quantity : 0;

@@ -501,6 +501,10 @@
     margin-top: 10px;
     background: #CED6DE;
 }
+.cpb-review__items:has(.cpb-review__empty)
+  + .cpb-review-panel__inner-separator {
+  display: none;
+}
 
 .cpb-review__label {
   font-size: 12px;
@@ -563,6 +567,7 @@
 /* Review Category Group */
 .cpb-review__category {
   border-bottom: 1px solid #f0f0f0;
+  padding: 0 20px;
 }
 
 .cpb-review__category:last-child {
@@ -570,13 +575,16 @@
 }
 
 .cpb-review__category-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3%;
+  line-height: 16px;
   color: #888;
   text-transform: uppercase;
-  padding: 15px 20px 8px;
-  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 8px;
+  margin-top: 10px !important;
+  border-top: 1px solid #CED6DE;
 }
 
 /* Review Item Row */
@@ -584,7 +592,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 6px 20px;
+  padding: 6px 0px;
 }
 .cpb-review__item:last-child {
   padding-bottom: 0;
@@ -629,21 +637,21 @@
 .cpb-review__item-qty {
   display: flex;
   align-items: center;
-  gap: 0;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
+  padding: 4px 0px;
+  gap: 12px;
   overflow: hidden;
   flex-shrink: 0;
 }
 
 .cpb-review__qty-btn {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   border: none;
+  border-radius: 4px;
   background: #fff;
   font-size: 14px;
   font-weight: 600;
-  color: #555;
+  color: #575757;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -659,14 +667,13 @@
 }
 
 .cpb-review__qty-value {
-  width: 24px;
+  width: 8px;
   text-align: center;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
   color: #1a1a1a;
-  border-left: 1px solid #e0e0e0;
-  border-right: 1px solid #e0e0e0;
-  line-height: 26px;
+  line-height: 16px;
+  letter-spacing: 0px;
 }
 
 /* Review Item Price */
@@ -712,8 +719,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 41px;
+  height: 41px;
   background: #F0EDFF;
   border-radius: 8px;
 }
@@ -1012,4 +1019,9 @@
 
 .details-wrapper{
     padding-top: 15px;
+}
+
+.cpb-review__shipping-icon-img{
+  width: 78px !important;
+  height: 78px !important;
 }

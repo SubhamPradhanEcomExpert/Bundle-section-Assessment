@@ -288,7 +288,6 @@
           <h2 class="cpb-review__title">{{ section.settings.review_title | default: 'Your security system' }}</h2>
           <p class="cpb-review__subtitle">{{ section.settings.review_subtitle | default: 'Review your personalized protection system designed to keep what matters most safe.' }}</p>
         </div>
-        <div class="cpb-review-panel__inner-separator"></div>
         <!-- Review Items Container (populated by JS) -->
         <div class="cpb-review__items" id="cpb-review-items">
           <div class="cpb-review__empty">
@@ -305,33 +304,43 @@
           <div class="cpb-review__shipping-row">
             <div class="cpb-review__shipping-left">
               <span class="cpb-review__shipping-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#4E2FD2"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect
-                    x="1"
-                    y="3"
-                    width="15"
-                    height="13"
-                    rx="2"
-                    ry="2" />
-                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-                  <circle
-                    cx="5.5"
-                    cy="18.5"
-                    r="2.5" />
-                  <circle
-                    cx="18.5"
-                    cy="18.5"
-                    r="2.5" />
-                </svg>
+                {% if section.settings.review_fast_shipping_icon %}
+                  <img
+                    src="{{ section.settings.review_fast_shipping_icon | image_url: width: 41 }}"
+                    alt=""
+                    class=""
+                    width="41"
+                    height="41"
+                    loading="lazy">
+                {% else %}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4E2FD2"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect
+                      x="1"
+                      y="3"
+                      width="15"
+                      height="13"
+                      rx="2"
+                      ry="2" />
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                    <circle
+                      cx="5.5"
+                      cy="18.5"
+                      r="2.5" />
+                    <circle
+                      cx="18.5"
+                      cy="18.5"
+                      r="2.5" />
+                  </svg>
+                {% endif %}
               </span>
               <span class="cpb-review__shipping-label">Fast Shipping</span>
             </div>
@@ -344,46 +353,56 @@
           <!-- Subtotal Row with Guarantee Badge -->
           <div class="cpb-review__subtotal-row">
             <div class="cpb-review__guarantee-badge">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="60"
-                height="60"
-                viewBox="0 0 100 100"
-                fill="none">
-                <path
-                  d="M50 5 L61 10 L73 7 L80 17 L92 20 L93 32 L100 42 L95 53 L100 64 L92 73 L88 85 L76 87 L66 96 L55 91 L44 96 L33 87 L21 85 L17 73 L7 64 L12 53 L7 42 L17 32 L15 20 L27 17 L34 7 Z"
-                  fill="#4E2FD2"
-                  stroke="#4E2FD2"
-                  stroke-width="1" />
-                <text
-                  x="50"
-                  y="38"
-                  text-anchor="middle"
-                  fill="#fff"
-                  font-size="18"
-                  font-weight="bold">100%</text>
-                <text
-                  x="50"
-                  y="52"
-                  text-anchor="middle"
-                  fill="#fff"
-                  font-size="10"
-                  font-weight="400">Wyze</text>
-                <text
-                  x="50"
-                  y="63"
-                  text-anchor="middle"
-                  fill="#fff"
-                  font-size="9"
-                  font-weight="400">satisfaction</text>
-                <text
-                  x="50"
-                  y="74"
-                  text-anchor="middle"
-                  fill="#fff"
-                  font-size="9"
-                  font-weight="400">guarantee</text>
-              </svg>
+              {% if section.settings.review_gurantee_icon %}
+                <img
+                  src="{{ section.settings.review_gurantee_icon | image_url: width: 78 }}"
+                  alt=""
+                  class=""
+                  width="78"
+                  height="78"
+                  loading="lazy">
+              {% else %}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 100 100"
+                  fill="none">
+                  <path
+                    d="M50 5 L61 10 L73 7 L80 17 L92 20 L93 32 L100 42 L95 53 L100 64 L92 73 L88 85 L76 87 L66 96 L55 91 L44 96 L33 87 L21 85 L17 73 L7 64 L12 53 L7 42 L17 32 L15 20 L27 17 L34 7 Z"
+                    fill="#4E2FD2"
+                    stroke="#4E2FD2"
+                    stroke-width="1" />
+                  <text
+                    x="50"
+                    y="38"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="18"
+                    font-weight="bold">100%</text>
+                  <text
+                    x="50"
+                    y="52"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="10"
+                    font-weight="400">Wyze</text>
+                  <text
+                    x="50"
+                    y="63"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="9"
+                    font-weight="400">satisfaction</text>
+                  <text
+                    x="50"
+                    y="74"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="9"
+                    font-weight="400">guarantee</text>
+                </svg>
+              {% endif %}
             </div>
             <div class="cpb-review__subtotal-content">
               <div class="cpb-review__installment">
@@ -434,12 +453,20 @@
         "default": "Review your personalized protection system designed to keep what matters most safe."
       },
       {
+        "type": "image_picker",
+        "id": "review_fast_shipping_icon",
+        "label": "Review section Fast shipping icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "review_gurantee_icon",
+        "label": "Review section brand gurantee icon"
+      }, {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
-      },
-      {
+      }, {
         "type": "header",
         "content": "Spacing Settings"
       }, {
