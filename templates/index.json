@@ -30,6 +30,59 @@
         "endorsement_name": ""
       }
     },
+    "custom_product_bundler_YDW7hb": {
+      "type": "custom-product-bundler",
+      "blocks": {
+        "category_block_hWFRW8": {
+          "type": "category_block",
+          "settings": {
+            "block_title": "Choose your cameras",
+            "collection": "cameras-collection",
+            "block_icon": "shopify://shop_images/livestream.png"
+          }
+        },
+        "category_block_GwhHMN": {
+          "type": "category_block",
+          "settings": {
+            "block_title": "Choose your plan",
+            "collection": "plan-collection",
+            "block_icon": "shopify://shop_images/logo_hms_new_1.png"
+          }
+        },
+        "category_block_bVyACJ": {
+          "type": "category_block",
+          "settings": {
+            "block_title": "Choose your sensors",
+            "collection": "sensors-collection",
+            "block_icon": "shopify://shop_images/Group_1417.png"
+          }
+        },
+        "category_block_kpW3H9": {
+          "type": "category_block",
+          "settings": {
+            "block_title": "Add extra protection",
+            "collection": "protection-collection",
+            "block_icon": "shopify://shop_images/Frame_1419.png"
+          }
+        }
+      },
+      "block_order": [
+        "category_block_hWFRW8",
+        "category_block_GwhHMN",
+        "category_block_bVyACJ",
+        "category_block_kpW3H9"
+      ],
+      "name": "Custom Product Bundler",
+      "settings": {
+        "review_title": "Your security system",
+        "review_subtitle": "Review your personalized protection system designed to keep what matters most safe.",
+        "review_fast_shipping_icon": "shopify://shop_images/Wyze_Sense_Keypad.png",
+        "review_gurantee_icon": "shopify://shop_images/Satisfaction_Badge-05_1.png",
+        "color_scheme": "",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
     "featured_collections_hhETJ9": {
       "type": "featured-collections",
       "blocks": {
@@ -183,6 +236,7 @@
   },
   "order": [
     "hero_1",
+    "custom_product_bundler_YDW7hb",
     "featured_collections_hhETJ9",
     "selling_points_v2_6NgzaK",
     "product_highlights_gUaG6E"
